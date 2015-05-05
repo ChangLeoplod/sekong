@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://logging.apache.org/log4php/">
+    <!-- 记录所有支付日志的appender -->
+    <appender name="PAY-ALL" class="LoggerAppenderDailyFile">
+            <layout class="LoggerLayoutPattern" >
+                    <param name="ConversionPattern" value="[%date{Y-m-d H:i:s,u}] [%t] %-5p %l - %message%newline%ex"/>
+            </layout>
+            <param name="file" value="/var/www/html/log/pay/php-pay.log.%s" />
+            <param name="threshold" value="info"/>
+            <param name="append" value="true" />
+            <param name="datePattern" value="Y-m-d" />
+    </appender>
+
+    <!-- 记录所有查看vip图集日志的appender -->
+    <appender name="BUY-ALL" class="LoggerAppenderDailyFile">
+            <layout class="LoggerLayoutPattern" >
+                    <param name="ConversionPattern" value="[%date{Y-m-d H:i:s,u}] [%t] %-5p %l - %message%newline%ex"/>
+            </layout>
+            <param name="file" value="/var/www/html/log/buy/php-buy.log.%s" />
+            <param name="threshold" value="info"/>
+            <param name="append" value="true" />
+            <param name="datePattern" value="Y-m-d" />
+    </appender>
+
+    <!-- 记录所有生成内容日志的appender -->
+    <appender name="GEN-ALL" class="LoggerAppenderDailyFile">
+            <layout class="LoggerLayoutPattern" >
+                    <param name="ConversionPattern" value="[%date{Y-m-d H:i:s,u}] [%t] %-5p %l - %message%newline%ex"/>
+            </layout>
+            <param name="file" value="/var/www/html/log/gen/php-geninfo.log.%s" />
+            <param name="threshold" value="info"/>
+            <param name="append" value="true" />
+            <param name="datePattern" value="Y-m-d" />
+            </appender>
+    <logger name="pay-all">
+            <appender-ref ref="PAY-ALL"/>
+    </logger>
+    <logger name="buy-all">
+            <appender-ref ref="BUY-ALL"/>
+    </logger>
+    <logger name="gen-all">
+            <appender-ref ref="GEN-ALL"/>
+    </logger>
+</configuration>
