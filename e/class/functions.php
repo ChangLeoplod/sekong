@@ -2827,6 +2827,21 @@ function ListHtml($classid,$fields,$enews=0,$userlistr=""){
 		$class_string=$k['classid'];
 		//$alt_strng=$k['title'];
 		$src_string=$k['titlepic'];
+		//将栏目页与内容页都放到一个json里面
+		$content_r=$empire->fetch1("select newstext from {$dbtbpre}ecms_news_data_1 where id='$k[id]' and classid='$k[classid]' limit 1");
+		$content_test=stripslashes($content_r['newstext']);
+		$img_arr=get_imgs($content_test);
+		$picList=array();
+		$picTemp="array(";
+		for($i =0; $i< count($img_arr);$i++)
+		{
+			$picTemp=$picTemp. "\"".$img_arr[$i]."\"";
+			if(($i+1)!=count($img_arr))
+			{
+				$picTemp=$picTemp.",";
+			}
+		}
+		$picTemp=$picTemp.")";
 		$arrayElement = $arrayElement .
 					"\$arrTemp = array(
 					'id' => " . $k['id'] . "\,
@@ -2835,7 +2850,8 @@ function ListHtml($classid,$fields,$enews=0,$userlistr=""){
 					'groupid' => ". $k['groupid'] . ",
 					'userfen' => " . $k['userfen'] . ",
 					'alt' => " . $alt_string. ",
-                                        'src' => \"" . $src_string  . "\");
+                                        'src' => \"" . $src_string  . "\",
+					'piclist' => " . $picTemp . ");
 				\$arrListInfo[]=\$arrTemp;
                                 ";
 
@@ -4794,11 +4810,27 @@ function GenMainPageForMobile()
 		while($bqr=$empire->fetch($ecms_bq_sql)){
 			$bqsr=sys_ReturnEcmsLoopStext($bqr);
 			$bqno++;
+			//将首页与内容页都放到一个json里面
+			$content_r=$empire->fetch1("select newstext from {$dbtbpre}ecms_news_data_1 where id='$bqr[id]' and classid='$bqr[classid]' limit 1");
+			$content_test=stripslashes($content_r['newstext']);
+			$img_arr=get_imgs($content_test);
+			$picList=array();
+			$picTemp="array(";
+			for($i =0; $i< count($img_arr);$i++)
+			{
+				$picTemp=$picTemp. "\"".$img_arr[$i]."\"";
+				if(($i+1)!=count($img_arr))
+				{
+					$picTemp=$picTemp.",";
+				}
+			}
+			$picTemp=$picTemp.")";
 			$retstring = $retstring . 
 				"\$arrTemp = array(
 					'href' => \"/shouji" . str_replace(".html", ".php", $bqsr[titleurl]) . "\",
 					'title' => \"" . esub($bqr[title],28) . "\",
-					'src' => \"" . $bqr[titlepic] . "\");
+					'src' => \"" . $bqr[titlepic] . "\",
+					'piclist' => ".$picTemp.");
 				";
 			$retstring = $retstring . 
 				"\$arrListInfo_MainPic[] = \$arrTemp;
@@ -4815,11 +4847,27 @@ function GenMainPageForMobile()
 			while($bqr=$empire->fetch($ecms_bq_sql)){
 				$bqsr=sys_ReturnEcmsLoopStext($bqr);
 				$bqno++;
+				//将首页与内容页都放到一个json里面
+				$content_r=$empire->fetch1("select newstext from {$dbtbpre}ecms_news_data_1 where id='$bqr[id]' and classid='$bqr[classid]' limit 1");
+				$content_test=stripslashes($content_r['newstext']);
+				$img_arr=get_imgs($content_test);
+				$picList=array();
+				$picTemp="array(";
+				for($i =0; $i< count($img_arr);$i++)
+				{
+					$picTemp=$picTemp. "\"".$img_arr[$i]."\"";
+					if(($i+1)!=count($img_arr))
+					{
+						$picTemp=$picTemp.",";
+					}
+				}
+				$picTemp=$picTemp.")";
 				$retstring = $retstring .
 					"\$arrTemp = array(
 					'href' => \"/shouji" . str_replace(".html", ".php", $bqsr[titleurl]) . "\",
 					'title' => \"" . esub($bqr[title],28) . "\",
-					'src' => \"" . $bqr[titlepic] . "\");
+					'src' => \"" . $bqr[titlepic] . "\",
+					'piclist' => " .$picTemp. ");
 					";
 				$retstring = $retstring .
 					"\$arrListInfo_MainPic[] = \$arrTemp;
