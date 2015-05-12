@@ -12,7 +12,7 @@ $ecms_config['db']['dbver']='5.0';	//数据库版本
 $ecms_config['db']['dbserver']='localhost';	//数据库登录地址
 $ecms_config['db']['dbport']='';	//端口，不填为按默认
 $ecms_config['db']['dbusername']='root';	//数据库用户名
-$ecms_config['db']['dbpassword']='gy123!@#';	//数据库密码
+$ecms_config['db']['dbpassword']='123456';	//数据库密码
 $ecms_config['db']['dbname']='sq_sekong';	//数据库名
 $ecms_config['db']['setchar']='utf8';	//设置默认编码
 $ecms_config['db']['dbchar']='utf8';	//数据库默认编码
@@ -82,7 +82,7 @@ $ecms_config['memberf']['userkey']='userkey';//用户密钥字段
 
 //后台安全设置
 $ecms_config['esafe']['loginauth']='';	//登录认证码,如果设置登录需要输入此认证码才能通过
-$ecms_config['esafe']['ecookiernd']='JiDisGbcygUdEiqfjV3EmnaAFzpAEG';	//后台登录COOKIE认证码(填写10~50个任意字符，最好多种字符组合)
+$ecms_config['esafe']['ecookiernd']='qqqqqqqqqqqqqqqqqqqqqqqqqqqqqq';	//后台登录COOKIE认证码(填写10~50个任意字符，最好多种字符组合)
 $ecms_config['esafe']['ckhloginfile']=0;	//后台是否启用文件验证,0为验证,1为不验证
 $ecms_config['esafe']['ckhloginip']=0;	//后台是否验证登录IP,0为不验证,1为验证
 $ecms_config['esafe']['ckhsession']=0;	//后台是否启用SESSION验证,0为不验证,1为验证
@@ -93,10 +93,10 @@ $ecms_config['esafe']['ckfromurl']=0;	//是否启用来源地址验证,0为不�
 //COOKIE设置
 $ecms_config['cks']['ckdomain']='';		//cookie作用域
 $ecms_config['cks']['ckpath']='/';		//cookie作用路径
-$ecms_config['cks']['ckvarpre']='zztgb';		//前台cookie变量前缀
-$ecms_config['cks']['ckadminvarpre']='fhska';		//后台cookie变量前缀
-$ecms_config['cks']['ckrnd']='2wzvhgYBkzUGCzLTnDvxeVAfdd63ZW';	//COOKIE验证随机码(填写10~50个任意字符，最好多种字符组合)
-$ecms_config['cks']['ckrndtwo']='egqmxpKTZXxvaGxW2NNwB4w5D4YHfz';	//COOKIE验证随机码2(填写10~50个任意字符，最好多种字符组合)
+$ecms_config['cks']['ckvarpre']='hhhhh';		//前台cookie变量前缀
+$ecms_config['cks']['ckadminvarpre']='hhhhh';		//后台cookie变量前缀
+$ecms_config['cks']['ckrnd']='qqqqqqqqqqqqqqqqqqqqqqqqqqqqqq';	//COOKIE验证随机码(填写10~50个任意字符，最好多种字符组合)
+$ecms_config['cks']['ckrndtwo']='qqqqqqqqqqqqqqqqqqqqqqqqqqqqqq';	//COOKIE验证随机码2(填写10~50个任意字符，最好多种字符组合)
 
 //网站防火墙配置
 $ecms_config['fw']['eopen']=0;	//开启防火墙(0为关闭,1为开启)
@@ -370,7 +370,7 @@ $emod_r[1]=Array('mid'=>1,
 'qeditdofunf'=>'||',
 'definfovoteid'=>0,
 'orderf'=>'',
-'sonclass'=>'|10|2|4|14|7|8|12|13|11|',
+'sonclass'=>'|10|2|4|14|7|8|17|12|13|11|',
 'tid'=>1,
 'tbname'=>'news');
 $emod_r[3]=Array('mid'=>3,
