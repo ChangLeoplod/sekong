@@ -5,9 +5,24 @@
  * 以下代码只是为了方便商户测试而提供的样例代码，商户可以根据自己网站的需要，按照技术文档编写, 并非一定要使用该代码。
  * 该代码仅供学习和研究 Ping++ SDK 使用，只是提供一个参考。
 */
+require_once dirname(__FILE__).'/../../../log4php/Logger.php';
+Logger::configure(dirname(__FILE__).'/../../../log4php/log4php.xml');
+$pay = Logger::getLogger('pay-all');
 
 require_once(dirname(__FILE__) . '/../init.php');
 $input_data = json_decode(file_get_contents('php://input'), true);
+/*
+$input_data = array(
+	'username'=>'test1',
+	'amount'=>1000,
+	'groupid'=>1,
+	'buytype'=>1,
+	'vipid'=>1,
+	'channelid'=>1000,
+	'client_ip'=>'59.174.164.71',
+	'channel'=>'alipay'
+	);
+*/
 if (empty($input_data['channel']) || empty($input_data['amount'])) {
 	//echo "exit\n";
 	$arr['success']=false;
@@ -72,6 +87,8 @@ switch ($channel) {
 
 \Pingpp\Pingpp::setApiKey('sk_test_efLmn9TqLKOG0OGOeLbHCmL0');
 try {
+	$pay->info('begin to request order');
+	$pay->info('orderno: '.$orderNo.', channel: '.$channel.', channelid: '.$channelid.', username: '.$username.', groupid: '.$groupid);
     $ch = \Pingpp\Charge::create(
         array(
             "subject"   => $buytypearray[$buytype],
