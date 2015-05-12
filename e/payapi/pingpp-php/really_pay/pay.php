@@ -25,6 +25,7 @@ $input_data = array(
 */
 if (empty($input_data['channel']) || empty($input_data['amount'])) {
 	//echo "exit\n";
+	$pay->warn("channel or amount is empty");
 	$arr['success']=false;
 	$arr['info']='para is not enough';
 	$strt=json_encode($arr,JSON_UNESCAPED_UNICODE);
@@ -41,6 +42,7 @@ $vipid = $input_data['vipid'];
 $channelid = $input_data['channelid'];
 if(empty($username) || empty($groupid) || empty($buytype) || empty($channelid))
 {
+	$pay->warn("para is not enough");
 	$arr['success']=false;
 	$arr['info']='para is not enough';
 	$strt=json_encode($arr,JSON_UNESCAPED_UNICODE);
