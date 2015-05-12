@@ -5,7 +5,7 @@
             <layout class="LoggerLayoutPattern" >
                     <param name="ConversionPattern" value="[%date{Y-m-d H:i:s,u}] [%t] %-5p %l - %message%newline%ex"/>
             </layout>
-            <param name="file" value="D:/server/sekong/log/pay/php-pay.log.%s" />
+            <param name="file" value="D:/server/PHP/log/pay/php-pay.log.%s" />
             <param name="threshold" value="info"/>
             <param name="append" value="true" />	
             <param name="datePattern" value="Y-m-d" />
@@ -16,7 +16,7 @@
             <layout class="LoggerLayoutPattern" >
                     <param name="ConversionPattern" value="[%date{Y-m-d H:i:s,u}] [%t] %-5p %l - %message%newline%ex"/>
             </layout>
-            <param name="file" value="D:/server/sekong/log/buy/php-buy.log.%s" />
+            <param name="file" value="D:/server/PHP/log/buy/php-buy.log.%s" />
             <param name="threshold" value="info"/>
             <param name="append" value="true" />
             <param name="datePattern" value="Y-m-d" />
@@ -27,7 +27,7 @@
             <layout class="LoggerLayoutPattern" >
                     <param name="ConversionPattern" value="[%date{Y-m-d H:i:s,u}] [%t] %-5p %l - %message%newline%ex"/>
             </layout>
-            <param name="file" value="D:/server/sekong/log/gen/php-geninfo.log.%s" />
+            <param name="file" value="D:/server/PHP/log/gen/php-geninfo.log.%s" />
             <param name="threshold" value="info"/>
             <param name="append" value="true" />
             <param name="datePattern" value="Y-m-d" />
