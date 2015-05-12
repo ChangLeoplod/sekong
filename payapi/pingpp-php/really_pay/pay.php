@@ -5,12 +5,10 @@
  * 以下代码只是为了方便商户测试而提供的样例代码，商户可以根据自己网站的需要，按照技术文档编写, 并非一定要使用该代码。
  * 该代码仅供学习和研究 Ping++ SDK 使用，只是提供一个参考。
 */
-<<<<<<< HEAD
-=======
+
 require_once dirname(__FILE__).'/../../../log4php/Logger.php';
 Logger::configure(dirname(__FILE__).'/../../../log4php/log4php.xml');
 $pay = Logger::getLogger('pay-all');
->>>>>>>  init
 
 require_once(dirname(__FILE__) . '/../init.php');
 $input_data = json_decode(file_get_contents('php://input'), true);
@@ -25,17 +23,14 @@ $input_data = array(
 	'client_ip'=>'59.174.164.71',
 	'channel'=>'alipay'
 	);
-<<<<<<< HEAD
 */
-=======
-	*/
->>>>>>>  init
 if (empty($input_data['channel']) || empty($input_data['amount'])) {
 	//echo "exit\n";
+	$pay->warn('channel or amount is empty');
 	$arr['success']=false;
 	$arr['info']='para is not enough';
 	$strt=json_encode($arr,JSON_UNESCAPED_UNICODE);
-        echo($strt);
+    echo($strt);
 	exit();
 }
 $channel = strtolower($input_data['channel']);
@@ -48,12 +43,9 @@ $vipid = $input_data['vipid'];
 $channelid = $input_data['channelid'];
 if(empty($username) || empty($groupid) || empty($buytype) || empty($channelid))
 {
+	$pay->warn('para is not enough');
 	$arr['success']=false;
 	$arr['info']='para is not enough';
-<<<<<<< HEAD
-=======
-	$pay->warn('para is not enough');
->>>>>>>  init
 	$strt=json_encode($arr,JSON_UNESCAPED_UNICODE);
         echo($strt);
 }
@@ -98,11 +90,8 @@ switch ($channel) {
 
 \Pingpp\Pingpp::setApiKey('sk_test_efLmn9TqLKOG0OGOeLbHCmL0');
 try {
-<<<<<<< HEAD
-=======
 	$pay->info('begin to request order');
 	$pay->info('orderno: '.$orderNo.', channel: '.$channel.', channelid: '.$channelid.', username: '.$username.', groupid: '.$groupid);
->>>>>>>  init
     $ch = \Pingpp\Charge::create(
         array(
             "subject"   => $buytypearray[$buytype],

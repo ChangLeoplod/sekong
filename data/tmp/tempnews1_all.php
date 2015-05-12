@@ -77,11 +77,7 @@ $bqno++;
        
     ?>
     <div class="wrap content_top">
-<<<<<<< HEAD
-        <h1 class="content_title"><?=$grpagetitle?> (9/<?php echo count($img_arr);?>)</h1>
-=======
         <h1 class="content_title"><?=$grpagetitle?> (<?php echo count($img_arr);?>张)</h1>
->>>>>>>  init
         <div class="content_top_right">
             <a href="" class="content_top_like">喜欢</a>
             <a href="" class="content_top_more">更多原创套图</a>
@@ -173,12 +169,7 @@ $bqno++;
             </div>
         </div>
     </div>
-
-<<<<<<< HEAD
-    <div class="wrap">
-=======
 <div class="wrap">
->>>>>>>  init
         <h2 class="content_more">更多美女图片</h2>
         <ul class="list1_">
             <?php
