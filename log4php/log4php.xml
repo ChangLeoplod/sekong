@@ -15,6 +15,7 @@
     <appender name="BUY-ALL" class="LoggerAppenderDailyFile">
             <layout class="LoggerLayoutPattern" >
                     <param name="ConversionPattern" value="[%date{Y-m-d H:i:s,u}] [%t] %-5p %l - %message%newline%ex"/>
+            </layout>
             <param name="file" value="D:/server/sekong/log/buy/php-buy.log.%s" />
             <param name="threshold" value="info"/>
             <param name="append" value="true" />
