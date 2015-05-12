@@ -8,7 +8,11 @@ $ecms_config=array();
 
 //数据库设置
 $ecms_config['db']['usedb']='mysql';	//数据库类型
+<<<<<<< HEAD
 $ecms_config['db']['dbver']='6.0';	//数据库版本
+=======
+$ecms_config['db']['dbver']='5.0';	//数据库版本
+>>>>>>>  init
 $ecms_config['db']['dbserver']='localhost';	//数据库登录地址
 $ecms_config['db']['dbport']='';	//端口，不填为按默认
 $ecms_config['db']['dbusername']='root';	//数据库用户名
@@ -82,7 +86,11 @@ $ecms_config['memberf']['userkey']='userkey';//用户密钥字段
 
 //后台安全设置
 $ecms_config['esafe']['loginauth']='';	//登录认证码,如果设置登录需要输入此认证码才能通过
+<<<<<<< HEAD
 $ecms_config['esafe']['ecookiernd']='tttttttttttttttttttttttttttttt';	//后台登录COOKIE认证码(填写10~50个任意字符，最好多种字符组合)
+=======
+$ecms_config['esafe']['ecookiernd']='LLLLLLLLLLLLLLLLLLLLLLLLLLLLLL';	//后台登录COOKIE认证码(填写10~50个任意字符，最好多种字符组合)
+>>>>>>>  init
 $ecms_config['esafe']['ckhloginfile']=0;	//后台是否启用文件验证,0为验证,1为不验证
 $ecms_config['esafe']['ckhloginip']=0;	//后台是否验证登录IP,0为不验证,1为验证
 $ecms_config['esafe']['ckhsession']=0;	//后台是否启用SESSION验证,0为不验证,1为验证
@@ -93,10 +101,17 @@ $ecms_config['esafe']['ckfromurl']=0;	//是否启用来源地址验证,0为不�
 //COOKIE设置
 $ecms_config['cks']['ckdomain']='';		//cookie作用域
 $ecms_config['cks']['ckpath']='/';		//cookie作用路径
+<<<<<<< HEAD
 $ecms_config['cks']['ckvarpre']='vvvvv';		//前台cookie变量前缀
 $ecms_config['cks']['ckadminvarpre']='vvvyy';		//后台cookie变量前缀
 $ecms_config['cks']['ckrnd']='tttttttttttttttttttttttttttttt';	//COOKIE验证随机码(填写10~50个任意字符，最好多种字符组合)
 $ecms_config['cks']['ckrndtwo']='ttttttttttttttzzzzzzzzzzzzzzzz';	//COOKIE验证随机码2(填写10~50个任意字符，最好多种字符组合)
+=======
+$ecms_config['cks']['ckvarpre']='wwwww';		//前台cookie变量前缀
+$ecms_config['cks']['ckadminvarpre']='wwwww';		//后台cookie变量前缀
+$ecms_config['cks']['ckrnd']='LLLLLLLLLLLLLLLLLLLLLLLLLLLLLL';	//COOKIE验证随机码(填写10~50个任意字符，最好多种字符组合)
+$ecms_config['cks']['ckrndtwo']='LLLLLLLLLLLLLLLLLLLLLLLLLLLLLL';	//COOKIE验证随机码2(填写10~50个任意字符，最好多种字符组合)
+>>>>>>>  init
 
 //网站防火墙配置
 $ecms_config['fw']['eopen']=0;	//开启防火墙(0为关闭,1为开启)
