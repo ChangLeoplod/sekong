@@ -4838,9 +4838,8 @@ function GenMainPageForMobile()
 		}
 	}
 	//明星美女
-	$w_index = 1;
-	$end_index = 7;
-	while($w_index < $end_index){
+	$w_index_array=array(2,4,7,10,11,12,13);
+	foreach($w_index_array as $w_index){
 		$bqno=0;
 		$ecms_bq_sql=sys_ReturnEcmsLoopBq($w_index,9,0,0);
 		if($ecms_bq_sql){
@@ -4874,7 +4873,6 @@ function GenMainPageForMobile()
 					";
 			}
 		}
-		$w_index++;
 	}
 
 	$retstring = $retstring .
