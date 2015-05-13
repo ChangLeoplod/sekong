@@ -4874,6 +4874,7 @@ function GenMainPageForMobile()
 			}
 		}
 	}
+	unset($w_index);
 
 	$retstring = $retstring .
                         "\$arr['MainPic'] = \$arrListInfo_MainPic;
