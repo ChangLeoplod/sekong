@@ -61,8 +61,12 @@ $page=(int)$_GET['page'];
 $page=RepPIntvar($page);
 $start=0;
 $offset=$page*$line;//总偏移量
-$query="select id,userid,username,orderid,money,posttime,paybz,type,payip from {$dbtbpre}enewspayrecord";
+$query="select id,userid,username,orderid,money,posttime,paybz,type,payip,channelid from {$dbtbpre}enewspayrecord";
 $totalquery="select count(*) as total from {$dbtbpre}enewspayrecord";
+$totalmoney="select sum(money) as total from {$dbtbpre}enewspayrecord";
+$totalali='';
+$totalunion='';
+$totalwx='';
 //搜索
 $search='';
 $where='';
@@ -94,10 +98,15 @@ if($_GET['sear']==1)
 		{
 			$a.=$and."paybz like '%$keyboard%'";
 		}
+		elseif($show==4)
+		{
+			$a.=$and."channelid = $keyboard";
+		}
 		else
 		{
 			$a.=$and."orderid like '%$keyboard%'";
 		}
+		
 		$search.="&keyboard=$keyboard&show=$show";
 	}
 	if($a)
@@ -106,8 +115,36 @@ if($_GET['sear']==1)
 	}
 	$query.=$where;
 	$totalquery.=$where;
+	$totalmoney.=$where;
+	
+	if($where)
+	{
+		$totalali=$totalmoney." and type like '%alipay%'";
+		$totalunion=$totalmoney." and type like '%up%'";
+		$totalwx=$totalmoney." and type like '%wx%'";
+	}
+	else
+	{
+		$totalali=$totalmoney." where type like '%alipay%'";
+		$totalunion=$totalmoney." where type like '%up%'";
+		$totalwx=$totalmoney." where type like '%wx%'";
+	}
 }
+
+else
+{
+	$totalali=$totalmoney." where type like '%alipay%'";
+	$totalunion=$totalmoney." where type like '%up%'";
+	$totalwx=$totalmoney." where type like '%wx%'";
+}
+//echo "totalali: ".$totalali;
+//echo "totalwx: ".$totalwx;
+//echo "totalunion: ".$totalunion;
 $num=$empire->gettotal($totalquery);//取得总条数
+$totalpay=$empire->gettotal($totalmoney);//取得总金额
+$alipay=$empire->gettotal($totalali);
+$unionpay=$empire->gettotal($totalunion);
+$wxpay=$empire->gettotal($totalwx);
 $query=$query." order by id desc limit $offset,$line";
 $sql=$empire->query($query);
 $returnpage=page2($num,$line,$page_line,$start,$page,$search);
@@ -156,6 +193,7 @@ function CheckAll(form)
             <option value="1"<?=$show==1?' selected':''?>>汇款者</option>
             <option value="2"<?=$show==2?' selected':''?>>汇款IP</option>
 			<option value="3"<?=$show==3?' selected':''?>>备注</option>
+			<option value="4"<?=$show==4?' selected':''?>>渠道号</option>
           </select>
           <input name=submit1 type=submit id="submit12" value=搜索>
           <input name="sear" type="hidden" id="sear" value="1">
@@ -169,13 +207,14 @@ function CheckAll(form)
       <td width="3%"><div align="center"> 
           <input type=checkbox name=chkall value=on onClick="CheckAll(this.form)">
         </div></td>
-      <td width="19%"><div align="center">订单号</div></td>
-      <td width="13%"><div align="center">汇款者</div></td>
-      <td width="10%" height="25"><div align="center">金额</div></td>
+      <td width="15%"><div align="center">订单号</div></td>
+      <td width="10%"><div align="center">汇款者</div></td>
+      <td width="5%" height="25"><div align="center">金额</div></td>
       <td width="15%"><div align="center">汇款时间</div></td>
-      <td width="12%" height="25"><div align="center">汇款IP</div></td>
+      <td width="10%" height="25"><div align="center">汇款IP</div></td>
       <td width="20%"><div align="center">备注</div></td>
       <td width="8%" height="25"><div align="center">接口</div></td>
+	  <td width="15%" height="25"><div align="center">渠道号<div></td>
     </tr>
     <?
   while($r=$empire->fetch($sql))
@@ -211,15 +250,25 @@ function CheckAll(form)
       <td><div align="center"> 
           <?=$r[paybz]?>
         </div></td>
-      <td height="25"><div align="center"><?=$r[type]?></div></td>
+      <td height="25"><div align="center"><?=$r[type]?>
+	  </div></td>
+	  <td height="25"><div align="center"><?=$r[channelid]?>
+	  </div></td>
     </tr>
     <?
   }
   ?>
     <tr bgcolor="#FFFFFF"> 
       <td height="25" colspan="8">&nbsp;
-        <?=$returnpage?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="submit" name="Submit" value="批量删除"> <input name="enews" type="hidden" id="enews" value="DelPayRecord_all"></td>
+        <?=$returnpage?>
+		&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;
+        <input type="submit" name="Submit" value="批量删除"> <input name="enews" type="hidden" id="enews" value="DelPayRecord_all">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<text height="25">微信:<?=$wxpay?></text>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<text height="25">银联:<?=$unionpay?></text>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<text height="25">支付宝:<?=$alipay?></text>
+		</td>
+		<td heigth="25"><div>总支付金额:<?=$totalpay?></div></td>
     </tr>
   </table>
 </form>
