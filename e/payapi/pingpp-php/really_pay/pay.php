@@ -87,7 +87,8 @@ switch ($channel) {
         break;
 }
 
-\Pingpp\Pingpp::setApiKey('sk_test_efLmn9TqLKOG0OGOeLbHCmL0');
+//\Pingpp\Pingpp::setApiKey('sk_test_efLmn9TqLKOG0OGOeLbHCmL0');
+\Pingpp\Pingpp::setApiKey('sk_live_KJIxGH42j6HD7Q7EBGNlVfnH');
 try {
 	$pay->info('begin to request order');
 	$pay->info('orderno: '.$orderNo.', channel: '.$channel.', channelid: '.$channelid.', username: '.$username.', groupid: '.$groupid);
