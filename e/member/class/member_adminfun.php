@@ -4,8 +4,10 @@
 //后台修改资料
 function admin_EditMember($add,$logininid,$loginin){
 	global $empire,$dbtbpre;
-	if(!trim($add[userid])||!trim($add[email])||!trim($add[username])||!$add[groupid])
+	//if(!trim($add[userid])||!trim($add[email])||!trim($add[username])||!$add[groupid])
+	if(!trim($add[userid])||!trim($add[username])||!$add[groupid])
 	{
+		echo "empty email?";
 		printerror("EmptyEmail","history.go(-1)");
 	}
     CheckLevel($logininid,$loginin,$classid,"member");//验证权限
