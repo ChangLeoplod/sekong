@@ -10,7 +10,7 @@ $empire=new mysqlquery();
 //执行代码
 $shouji_string = GenMainPageRandom();
 $shoujitruefile = ECMS_PATH.'shouji/index_test.php';
-echo "shouji true file: " . $shoujitruefile;
+//echo "shouji true file: " . $shoujitruefile;
 WriteFiletext($shoujitruefile,AddPHPHead().$shouji_string.AddPHPTail());
 
 
