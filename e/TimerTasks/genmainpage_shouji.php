@@ -12,7 +12,6 @@ if(empty($videoflag))
 {
 	$videoflag=0;
 }
-echo "videoflag: " . $videoflag;
 
 //执行代码
 $shouji_string = GenMainPageRandom($videoflag);
