@@ -33,23 +33,16 @@ function GenMainPageRandom()
 	\$arrListInfo_category = array();
 	";
 	$bqno=0;
-	$ecms_bq_sql=sys_ReturnEcmsLoopBq("select classid,classname from {$dbtbpre}enewsclass where bclassid=0 order by myorder,classid asc",0,24,0);
+	$ecms_bq_sql=sys_ReturnEcmsLoopBq("select classid,classname,classpath from {$dbtbpre}enewsclass where bclassid=0 order by myorder,classid asc",0,24,0);
 	if($ecms_bq_sql){
 		while($bqr=$empire->fetch($ecms_bq_sql)){
 			$bqsr=sys_ReturnEcmsLoopStext($bqr);
 			$bqno++;
-			$classurl=sys_ReturnBqClassname($bqr,9);//取得栏目地址
-			$class="";
-			if($GLOBALS[navclassid]){
-				$fcr=explode('|',$class_r[$GLOBALS[navclassid]][featherclass]);
-				$topbclassid=$fcr[1]?$fcr[1]:$GLOBALS[navclassid];//取得当前栏目的一级栏目ID
-				if($bqr[classid]==$topbclassid){
-					$class="current";
-				}
-			}
+			//$classurl=sys_ReturnBqClassname($bqr,9);//取得栏目地址
+			$classurl=$bqr['classpath']; //取得栏目地址
 			$retstring = $retstring . 
 				"\$arrTemp = array(
-					'classurl' => " . "\"/shouji" . $classurl . "\"". ",
+					'classurl' => " . "\"/shouji/" . $classurl . "/\"". ",
 					'classid' => " . "\"" . $bqr[classid] . "\"" . ",
 					'name' => " . "\"" . $bqr[classname] . "\"" . ");
 				";
