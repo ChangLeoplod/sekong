@@ -7,15 +7,22 @@ require("../class/functions.php");
 $link=db_connect();
 $empire=new mysqlquery();
 
+$videoflag = $_GET['videoflag'];
+if(empty($videoflag))
+{
+	$videoflag=0;
+}
+echo "videoflag: " . $videoflag;
+
 //执行代码
-$shouji_string = GenMainPageRandom();
+$shouji_string = GenMainPageRandom($videoflag);
 $shoujitruefile = ECMS_PATH.'shouji/index.php';
 //echo "shouji true file: " . $shoujitruefile;
 WriteFiletext($shoujitruefile,AddPHPHead().$shouji_string.AddPHPTail());
 
 
 //为手机随机生成首页php文件
-function GenMainPageRandom()
+function GenMainPageRandom($videoflag)
 {
 	global $empire,$dbtbpre;
 	if(!defined('InEmpireCMS'))
@@ -24,6 +31,7 @@ function GenMainPageRandom()
 	}
 	$retstring = "\$arr = array();
 	\$arr['success'] = true;
+	\$arr['videoflag'] = $videoflag;
 	";
 
 	//搜集目录栏
