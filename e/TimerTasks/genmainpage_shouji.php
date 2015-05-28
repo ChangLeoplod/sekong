@@ -9,7 +9,7 @@ $empire=new mysqlquery();
 
 //执行代码
 $shouji_string = GenMainPageRandom();
-$shoujitruefile = ECMS_PATH.'shouji/index_test.php';
+$shoujitruefile = ECMS_PATH.'shouji/index.php';
 //echo "shouji true file: " . $shoujitruefile;
 WriteFiletext($shoujitruefile,AddPHPHead().$shouji_string.AddPHPTail());
 
@@ -127,6 +127,7 @@ function GenMainPageRandom()
 	return $retstring;
 }
 
+echo "success";
 db_close();
 $empire=null;
 ?>
