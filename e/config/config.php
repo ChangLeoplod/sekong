@@ -237,7 +237,7 @@ $public_r=array('sitename'=>'【色空美女】- 美女图片|性感美女|嫩�
 'gbkey_ok'=>0,
 'fbkey_ok'=>0,
 'newaddinfotime'=>0,
-'classnavs'=>'<a href=\"/siwameitui/\">丝袜美腿</a>&nbsp;|&nbsp;<a href=\"/xiurenmote/\">嫩模写真</a>&nbsp;|&nbsp;<a href=\"/qingchunmeinv/\">小清新</a>&nbsp;|&nbsp;<a href=\"/xingganmeinv/\">性感美女</a>',
+'classnavs'=>'<a href=\"/xingganmeinv/\">性感美女</a>&nbsp;|&nbsp;<a href=\"/siwameitui/\">丝袜美腿</a>&nbsp;|&nbsp;<a href=\"/qingchunmeinv/\">小清新</a>&nbsp;|&nbsp;<a href=\"/xiurenmote/\">嫩模写真</a>',
 'adminstyle'=>',1,2,',
 'docnewsnum'=>300,
 'openschall'=>0,
